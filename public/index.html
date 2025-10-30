@@ -1,42 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Zapatería Aether</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/">Zapatería Aether</a>
-      <div class="d-flex">
-        <a href="/cart.html" class="btn btn-outline-light">Carrito <span id="cart-count" class="badge bg-warning text-dark ms-1">0</span></a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TODO A 50.000</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      .navbar-custom {
+        background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+      }
+      .navbar-brand {
+        font-weight: 700;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+      }
+      .header-custom {
+        background: linear-gradient(135deg, #ffc107 0%, #ffb300 100%);
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+      .btn-cart {
+        background-color: #ffc107;
+        color: #000;
+        font-weight: 600;
+        border: none;
+      }
+      .btn-cart:hover {
+        background-color: #ffb300;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+      <div class="container">
+        <a class="navbar-brand" href="/">🔥 TODO A 50.000</a>
+        <div class="d-flex">
+          <a href="/cart.html" class="btn btn-cart"
+            >Carrito
+            <span id="cart-count" class="badge bg-danger text-white ms-1"
+              >0</span
+            ></a
+          >
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <header class="py-5 text-center bg-white border-bottom">
-    <div class="container">
-      <h1 class="display-5 fw-bold">Tu nueva tienda de zapatos</h1>
-      <p class="lead text-muted">Bootstrap + Express (TypeScript). Productos de ejemplo y carrito por sesión.</p>
-    </div>
-  </header>
+    <header class="py-5 text-center header-custom border-bottom">
+      <div class="container">
+        <h1 class="display-4 fw-bold">¡TODO EN OFERTA A $50.000!</h1>
+        <p class="lead fw-semibold">
+          Los mejores zapatos al mejor precio. ¡No te lo pierdas!
+        </p>
+      </div>
+    </header>
 
-  <main class="container py-4">
-    <div id="product-list" class="row g-4"></div>
-  </main>
+    <main class="container py-4">
+      <div id="product-list" class="row g-4"></div>
+    </main>
 
-  <footer class="py-5 bg-dark text-light">
-    <div class="container text-center">
-      <p class="mb-0">&copy; <span id="year"></span> Zapatería Aether</p>
-    </div>
-  </footer>
+    <footer class="py-5 navbar-custom text-light">
+      <div class="container text-center">
+        <p class="mb-0">
+          &copy; <span id="year"></span> TODO A 50.000 - Todos los derechos
+          reservados al grupo de JHON reservados
+        </p>
+      </div>
+    </footer>
 
-  <script src="js/app.js" type="module"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script src="js/app.js" type="module"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>

@@ -53,6 +53,7 @@ function renderProducts(products) {
         body: JSON.stringify({ productId, qty })
       });
       updateCartCount();
+      showToast();
     });
   });
 }
@@ -88,6 +89,15 @@ async function updateCartCount() {
   const cart = await res.json();
   const count = cart.reduce((acc, i) => acc + i.qty, 0);
   document.getElementById('cart-count').textContent = String(count);
+}
+
+function showToast() {
+  const toastElement = document.getElementById('cart-toast');
+  const toast = new bootstrap.Toast(toastElement, {
+    autohide: true,
+    delay: 3000
+  });
+  toast.show();
 }
 
 // Event listeners para filtrado en tiempo real

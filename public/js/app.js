@@ -1,9 +1,30 @@
 const fmt = (n) => n.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
 
+// Variable global para almacenar todos los productos
+let allProducts = [];
+
 async function loadProducts() {
   const res = await fetch('/api/products');
-  const products = await res.json();
+  allProducts = await res.json();
+  renderProducts(allProducts);
+  updateCartCount();
+}
+
+function renderProducts(products) {
   const list = document.getElementById('product-list');
+  const noResults = document.getElementById('no-results');
+  const resultsCount = document.getElementById('results-count');
+
+  if (products.length === 0) {
+    list.innerHTML = '';
+    noResults.classList.remove('d-none');
+    resultsCount.textContent = 'No se encontraron productos';
+    return;
+  }
+
+  noResults.classList.add('d-none');
+  resultsCount.textContent = `Mostrando ${products.length} producto${products.length !== 1 ? 's' : ''}`;
+
   list.innerHTML = products.map(p => `
     <div class="col-12 col-sm-6 col-lg-4">
       <div class="card h-100 shadow-sm">
@@ -21,6 +42,7 @@ async function loadProducts() {
     </div>
   `).join('');
 
+  // Agregar eventos de click a los botones
   list.querySelectorAll('button[data-id]').forEach(btn => {
     btn.addEventListener('click', async () => {
       const productId = Number(btn.dataset.id);
@@ -33,8 +55,32 @@ async function loadProducts() {
       updateCartCount();
     });
   });
+}
 
-  updateCartCount();
+function filterProducts() {
+  const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+  const minPrice = parseFloat(document.getElementById('min-price').value) || 0;
+  const maxPrice = parseFloat(document.getElementById('max-price').value) || Infinity;
+
+  const filtered = allProducts.filter(product => {
+    // Filtrar por nombre
+    const matchesName = product.name.toLowerCase().includes(searchTerm) || 
+                       product.description.toLowerCase().includes(searchTerm);
+    
+    // Filtrar por rango de precios
+    const matchesPrice = product.price >= minPrice && product.price <= maxPrice;
+
+    return matchesName && matchesPrice;
+  });
+
+  renderProducts(filtered);
+}
+
+function clearFilters() {
+  document.getElementById('search-input').value = '';
+  document.getElementById('min-price').value = '';
+  document.getElementById('max-price').value = '';
+  renderProducts(allProducts);
 }
 
 async function updateCartCount() {
@@ -44,4 +90,16 @@ async function updateCartCount() {
   document.getElementById('cart-count').textContent = String(count);
 }
 
-loadProducts();
+// Event listeners para filtrado en tiempo real
+document.addEventListener('DOMContentLoaded', () => {
+  loadProducts();
+
+  // Filtrado en tiempo real al escribir
+  document.getElementById('search-input').addEventListener('input', filterProducts);
+  document.getElementById('min-price').addEventListener('input', filterProducts);
+  document.getElementById('max-price').addEventListener('input', filterProducts);
+
+  // Boton para limpiar filtros
+  document.getElementById('clear-filters').addEventListener('click', clearFilters);
+});
+

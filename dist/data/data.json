@@ -47,22 +47,31 @@
       "image": "/img/shoe_6.png",
       "description": "Ideal para montana y terrenos irregulares.",
       "stock": 7
+    },
+    {
+      "id": 7,
+      "name": "Mocasines Negros",
+      "price": 200000,
+      "image": "/img/shoe_7.png",
+      "description": "Zapatos comodos y sin cordones, con un estilo clasico y versatil.",
+      "stock": 24
+    },
+    {
+      "id": 8,
+      "name": "Botines gamuza",
+      "price": 150000,
+      "image": "/img/shoe_8.png",
+      "description": "Zapatos tipo bota que cubren hasta el tobillo, combinan comodidad y estilo.",
+      "stock": 15
+    },
+    {
+      "id": 9,
+      "name": "Tacones azul rey",
+      "price": 300999,
+      "image": "/img/shoe_9.png",
+      "description": "Calzado femenino con elevacion en el talon que estiliza la figura y aporta elegancia.",
+      "stock": 25
     }
   ],
-  "carts": {
-    "default-session": [
-      {
-        "productId": 2,
-        "qty": 2
-      },
-      {
-        "productId": 1,
-        "qty": 1
-      },
-      {
-        "productId": 3,
-        "qty": 1
-      }
-    ]
-  }
+  "carts": {}
 }

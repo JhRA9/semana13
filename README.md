@@ -5,6 +5,35 @@ El carrito se guarda por sesión (cookie-session) y el catálogo es en memoria.
 
 ## Requisitos para el funcionamiento del proyecto
 
+- Node.js 18+
+- npm
+- (Opcional) Docker Desktop para ejecucion en contenedor
+
+## Opcion 1: Ejecutar con Docker 🐳 (Recomendado)
+
+**Requisito:** Tener Docker Desktop instalado y corriendo
+
+### Comando rapido:
+
+```bash
+docker build -t zapateria-app .
+docker run -p 3000:3000 --name zapateria-container zapateria-app
+```
+
+### O usar el script automatico (Windows):
+
+```powershell
+.\docker-run.bat
+```
+
+**Visitar:** http://localhost:3000
+
+Ver instrucciones completas en [DOCKER-INSTRUCCIONES.md](DOCKER-INSTRUCCIONES.md)
+
+---
+
+## Opcion 2: Ejecutar localmente (sin Docker)
+
 ## Instalacion de dependencias
 
 ```bash
@@ -115,8 +144,12 @@ zapateria-app/
 │  │  └─ index.d.ts        → Definiciones de tipos TypeScript
 │  └─ server.ts            → Servidor Express principal
 ├─ tests/                  → Pruebas unitarias
-│  └─ app.test.js          → pruebas del backend (leer mas abajo)
+│  └─ app.test.js          → 10 pruebas del backend
 ├─ dist/                   → Codigo JavaScript compilado
+├─ Dockerfile              → Configuracion de Docker
+├─ .dockerignore           → Archivos ignorados por Docker
+├─ docker-run.bat          → Script para ejecutar Docker en Windows
+├─ DOCKER-INSTRUCCIONES.md → Guia completa de Docker
 ├─ .env.example            → Plantilla de variables de entorno
 ├─ .gitignore              → Archivos ignorados en git
 ├─ jest.config.json        → Configuracion de Jest

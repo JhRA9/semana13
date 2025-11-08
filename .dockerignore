@@ -1,0 +1,14 @@
+# No copiar estos archivos al contenedor Docker
+node_modules
+dist
+npm-debug.log
+.env
+.git
+.gitignore
+README.md
+.vscode
+.idea
+*.swp
+*.swo
+coverage
+.nyc_output
